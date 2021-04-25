@@ -54,7 +54,11 @@ class Parcel(models.Model):
 
 
     def __str__(self):
-        return 'Merchant Invoice ID: '+self.merchant_invoice_id+' - '+'Total: '+str(self.price())
+        try:
+            return 'Merchant Invoice ID: '+self.merchant_invoice_id+' - '+'Total: '+str(self.price())
+        except:
+            return 'Merchant Invoice ID: '+self.merchant_invoice_id
+            
 
 class ParcelDetails(models.Model):
     parcel=models.OneToOneField(Parcel,related_name='parcel_details',on_delete=models.CASCADE)
