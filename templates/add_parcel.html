@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Parcel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link "  href="{% url 'parcel_list' %}">Parcel List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'add_parcel' %}">Add Parcel</a>
+        </li>
+        <li class="nav-item">
+                  
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+ 
+            <button class="nav-link" type="submit" style=" border:none;background-color:transparent"> Sign Out</button>
+        </form>
+
+        
+        </li>
+   
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="col-sm-8 col-12" style="margin:20px 20px 20px 20px">
+
+
+
+<form action="{% url 'add_parcel' %}" method="POST">
+ {% csrf_token %}
+  <div class="form-row">
+
+
+    <div class="form-group col-md-4">
+      <label for="merchant-select">Merchant</label>
+      <select id="merchant-select" name="merchant_id" class="form-control" required>
+        <option value="">Choose Merchant...</optionn>
+        
+        {% for merchant in merchants %}
+        <option value={{merchant.id}}>{{merchant.name}}</option>
+        {% endfor %}
+         
+      </select>
+    </div>
+
+
+    <div class="form-group col-md-4">
+      <label for="product-type-select">Product Type</label>
+      <select id="product-type-select" name="product_type" class="form-control">
+        <option value="fragile">Fragile</option>
+        <option value="liquid">Liquid</option>
+      </select>
+    </div>
+
+  <div class="form-group col-md-4">
+    <label for="invoice-id-input">Merchant Invoice ID</label>
+    <input type="text"  name="invoice_id" class="form-control" id="invoice-id-input" placeholder="4 Digit Code" required>
+  </div>
+
+  </div>
+
+
+
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="area-select">Area</label>
+      <select id="area-select" name="area_id" class="form-control" required>
+        <option value="" selected>Choose Area...</option>
+
+        {% for area in areas %}
+        <option value={{ area.id}}>{{area.title}}</option>
+
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="parcel-opton-select">Parcel Option</label>
+      <select id="parcel-opton-select" name="price_option_id"  class="form-control" required>
+        <option value=""  selected>Choose Parcel Option...</option>
+      
+      </select>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="total-price">Total Price</label>
+      <input type="text" class="form-control" id="total-price" disabled>
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Save Parcel Details</button>
+</form>
+<div >{{ message }}</div>
+</div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static '/add-parcel.js' %}"></script>
+
+
+
+</body>
+</html>

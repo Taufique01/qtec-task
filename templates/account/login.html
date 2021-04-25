@@ -1,0 +1,23 @@
+{% extends "account/base.html" %}
+
+
+{% load crispy_forms_tags %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+<div>
+<div>Use the following username and password to log in. You can also login to djnago admin with this credential.</div>
+<h5 class="text-primary">Username: taufique</h5>
+<h5 class="text-primary">Password: 123456</h5>
+</div>
+
+<h2>Log in</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <button class="btn btn-success" type="submit">Log in</button>
+</form>
+<a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+{% endblock content %}

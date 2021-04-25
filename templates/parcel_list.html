@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Parcel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'parcel_list' %}">Parcel List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_parcel' %}">Add Parcel</a>
+        </li>
+        <li class="nav-item">
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+ 
+            <button class="nav-link" type="submit" style=" border:none;background-color:transparent"> Sign Out</button>
+        </form>
+
+        </li>
+   
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div style="margin:20px 20px 20px 20px">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Mercahnt</th>
+      <th scope="col">Invoice Id</th>
+      <th scope="col">Product Type</th>
+      <th scope="col">Area</th>
+      <th scope="col">Unit-Price</th>
+     <th scope="col">Total Price</th>
+     <th scope="col">Created at</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% for parcel  in parcelList %}
+    
+    <tr>
+      <th>{{ parcel.merchant.name }}</th>
+      <th>{{ parcel.merchant_invoice_id }}</th>
+      <th>{{ parcel.product_type }}</th>
+      <th>{{ parcel.area }}</th>
+      <th>{{ parcel.unit_and_price }}</th>
+      <th>{{ parcel.price }}</th>
+      <th>{{ parcel.created_at }}</th>
+
+    </tr>
+
+{% endfor %}
+
+
+  </tbody>
+</table>
+
+
+</div>
+    
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+</html>
