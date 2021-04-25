@@ -14,6 +14,6 @@ python manage.py runserver
  ```
 
 Now, browse the appication from
-http://127.0.0.1:800
+http://127.0.0.1:8000
 
 Demo: https://qtec-task.herokuapp.com/
