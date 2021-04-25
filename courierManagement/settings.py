@@ -24,7 +24,7 @@ SITE_ID=1
 SECRET_KEY = 'if&y0041+_85&h$x8up#+gisg#yb^zry3o$_5e#z9ng!lm2*at'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1:8000','qtec-task.herokuapp.com']
 
