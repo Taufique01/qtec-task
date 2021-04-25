@@ -24,7 +24,7 @@ SITE_ID=1
 SECRET_KEY = 'if&y0041+_85&h$x8up#+gisg#yb^zry3o$_5e#z9ng!lm2*at'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1:8000','qtec-task.herokuapp.com']
 
@@ -135,7 +135,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'staticfiles'),#to look for static files
 )
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 import dj_database_url 
